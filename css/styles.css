@@ -115,9 +115,13 @@ p {
 
 
 .link-nav {
+    position: relative;
     display: flex;
     padding-top: 32px;
     padding-bottom: 32px;
+
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
     
     color: var(--title-text-color);
     font-weight: 500;
@@ -160,10 +164,22 @@ p {
 .link-nav:hover,
 .link-nav:focus {
     color: var(--accent-color);
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.link-nav.current::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--accent-color);
+}
 .link-nav.current {
     color: var(--accent-color);
+
 }
 
 /* .link-nav.current::after {
@@ -174,6 +190,58 @@ p {
 } */
 
 /* Стилі <main> index.html */
+
+/* Modal window */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden .modal {
+    transform: scale(0,.9);
+}
+
+.modal {
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+
+    width: 528px;
+    height: 581px;
+
+    background-color: var(--white-color-page);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-btn {
+    display: flex;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+}
+
 
 .hero { 
     max-width: 1600px;
@@ -201,11 +269,17 @@ p {
     border-radius: 4px;
     margin-left: auto;
     margin-right: auto;
+
+    transition-duration: 250ms;
+    cubic-bezier (0.4, 0, 0.2, 1);
 }
 .hero .button:hover,
 .hero .button:focus {
     color: var(--white-color-page);
-    background-color: var(--bg-button-color) ;
+    background-color: var(--bg-button-color);
+
+    transition-duration: 250ms;
+    cubic-bezier (0.4, 0, 0.2, 1);
 }
 
 .hero .title {
@@ -273,10 +347,37 @@ p {
     display: flex;
 }
 
+.portfolio-item {
+    position: relative;
+}
 
-.portfolio .item + .item {
+
+.portfolio .portfolio-item + .portfolio-item {
     margin-left: 30px;
 }
+
+.portfolio-item .item {
+    position: absolute;
+    width: 100%;
+    height: ;
+    bottom:0%;
+    left: 0%;
+
+
+    background-color: rgba(47, 48, 58, 0.8);
+}
+
+.item-text {
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: var(--white-color-page);
+    padding-top: 27px;
+    padding-bottom: 27px;
+}
+
 .portfolio-title,
 .team-title,
 .clients-title {
@@ -343,11 +444,17 @@ p {
     color: var(--icon-color);
     background-color: var(--white-color-page);
     border-radius: 50%;
+
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-link:hover,
 .social-link:focus {
     background-color: var(--accent-color);
     color: var(--white-color-page);
+
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-icon {
@@ -379,16 +486,25 @@ p {
 
 .client-icon {
     fill: var(--icon-color);
+
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-link:hover,
 .client-link:focus {
     border-color: var(--accent-color);
+
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-link:hover .client-icon,
 .client-link:focus .client-icon {
     fill: var(--accent-color);
+
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -412,6 +528,9 @@ p {
     cursor: pointer;
     letter-spacing: 0.03em;
 
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .button:hover,
@@ -420,6 +539,9 @@ p {
     color: var(--white-color-page);
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
     border-radius: 4px;
+
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 .buttons{
     display: flex;
@@ -433,6 +555,43 @@ p {
 
 /* Projects */
 
+
+
+.box {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-link:hover .overlay,
+.project-link:focus .overlay {
+    transform: translatex(0);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(33, 150, 243, 0.9);
+
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay-text {
+    color: rgba(255, 255, 255, 1);
+    padding-top: 63px;
+    padding-bottom: 63px;
+    padding-left: 24px;
+    padding-right: 24px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+
+
 .projects{
     display: flex;
     flex-wrap: wrap;
@@ -440,8 +599,11 @@ p {
 .project-link {
     display: block;
     text-decoration: none;
+
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
-.project {
+.project {  
     
     width: 370px;
     margin-right: 30px;
@@ -450,6 +612,8 @@ p {
 .project-link:hover,
 .project-link:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project:nth-child(3n) {
@@ -505,6 +669,9 @@ p {
     letter-spacing: 0.03em;
     text-decoration:none;
     font-style:normal;
+
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer  {
     background-color: var(--background-footer-color);
@@ -514,6 +681,8 @@ p {
 .footer .link:hover,
 .footer .link:focus{
     color: var(--accent-color);
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer .logo {
     display: inline-block;
@@ -563,8 +732,13 @@ p {
     color: var(--white-color-page);
     background-color: var(--join-link-color);
     border-radius: 50%;
+
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 .join-link:hover,
 .join-link:focus {
     background-color: var(--accent-color);
+    transition-duration: 250ms;
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
